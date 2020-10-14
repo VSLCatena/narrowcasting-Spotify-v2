@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+    <title>Catena Spotify</title>
+    <link rel="stylesheet" href="./styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <script type="text/javascript" src="./scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="./scripts/vue.min.js"></script>
+    <script type="text/javascript" src="./scripts/script.js"></script>
+</head>
+<body>
+    <div class="background"></div>
+    <div id="spotifyApp" class="container-fluid p-4">
+        <div class="row">
+            <div class="col">
+                <img class="spotifyLogo" src="./images/spotify_logo.png" />
+            </div>
+        </div>
+        <div class="row d-flex align-items-end">
+            <div class="col-8">
+                <div class="bottomLine"></div>
+            </div>
+            <div class="col-4">
+                <!-- Sadly this title needs to be defined here so we can align it correctly-->
+                <h4>Recent afgespeeld</h4>
+                <div class="bottomLine"></div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Currently playing -->
+            <div class="col-8">
+                <div v-if="currentlyPlaying != null">
+                    <div class="row mt-3">
+                        <div class="col-6 d-flex flex-column justify-content-center text-center">
+                            <h2>{{ currentlyPlaying.track.name }}</h2>
+                            <h4>{{ currentlyPlaying.track.artists.join(', ') }}</h4>
+                        </div>
+                        <div class="col-6 text-center position-relative">
+                            <img class="songImage" :src="currentlyPlaying.track.image" />
+                        </div>
+                    </div>
+                    <div class="mt-3 card bg-dark p-3 d-flex flex-row align-items-center">
+                        <h4 class="mr-3 mt-1 mb-1">{{ parseTime(currentlyPlaying.currentProgress) }}</h4>
+                        <div class="card bg-secondary flex-grow-1">
+                            <div class="card bg-light" :style="{ width: songProgress+'%' }">&nbsp;</div>
+                        </div>
+                        <h4 class="ml-3 mt-1 mb-1">{{ parseTime(currentlyPlaying.songDuration) }}</h4>
+                    </div>
+                </div>
+                <div v-else>
+                    <div class="row">
+                        <h3 class="col">No song playing</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- End currently playing -->
+            <!-- Recently played-->
+            <div class="col-4 mt-3">
+                <!-- For every recently played track -->
+                <div class="row" v-for="(item, index) in recentlyPlayed" :key="index">
+                    <div class="col-2">{{ parseDate(item.date) }}</div>
+                    <div class="col-10">
+                        {{ item.track.artists.join(', ') }} - {{ item.track.name }}
+                    </div>
+                    <div class="col-12 pt-2 pb-2"><div class="bottomLine"></div></div>
+                </div>
+                <!-- End for every recent track -->
+            </div>
+            <!-- End recently played -->
+        </div>
+    </div>
+</body>
+</html>
