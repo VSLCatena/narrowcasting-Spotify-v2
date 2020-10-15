@@ -89,11 +89,8 @@ window.addEventListener('load', function() {
                         this.timeLastUpdated = 0;
                     }
 
-                    // We replace the whole object with the same object, but with currentProcess being overwritten
-                    this.currentlyPlaying = {
-                        ...this.currentlyPlaying,
-                        currentProgress: newProgress,
-                    };
+                    // And we set the currentProgress to the newProgress
+                    this.currentlyPlaying.currentProgress = newProgress;
                 }
 
                 // If we haven't updated for over 5 seconds we refresh current playing song
