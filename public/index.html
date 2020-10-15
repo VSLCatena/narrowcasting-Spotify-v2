@@ -56,7 +56,7 @@
             <!-- Recently played-->
             <div class="col-4 mt-3">
                 <!-- For every recently played track -->
-                <div v-for="(item, index) in recentlyPlayed" :key="index">
+                <div v-for="item in recentlyPlayed" :key="item.date">
                     <div class="row recent-item">
                         <div class="col-2">{{ parseDate(item.date) }}</div>
                         <div class="col-10">
