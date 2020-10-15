@@ -24,7 +24,12 @@ html, body {
 }
 
 .bottomLine {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #777;
+}
+
+.recent-item {
+    font-size: 25px;
+    padding: 5px;
 }
 
 .songImage {
