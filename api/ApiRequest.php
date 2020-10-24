@@ -8,18 +8,18 @@ const DATA_FILE = __DIR__ . '/../data.json';
 class ApiRequest {
 
     /** Our Spotify clientId */
-    private string $clientId;
+    private $clientId;
     /** Our Spotify clientSecret */
-    private string $clientSecret;    
+    private $clientSecret;
     /** Our Spotify redirectUri as defined at Spotify itself */
-    private string $redirectUri;
+    private $redirectUri;
 
     /** The accessToken of the user which will be used for all API calls */
-    private ?string $accessToken = null;
+    private $accessToken = null;
     /** The expirationDate in UnixTimeStamp of when this accessToken will expire */
-    private ?int $expirationDate = null;
+    private $expirationDate = null;
     /** The refreshToken which will be used to grab a new accessToken when the previous one expired */
-    private ?string $refreshToken = null;
+    private  $refreshToken = null;
 
     /**
      * If you don't provide any arguments it will automatically grab it from the env file.
@@ -33,7 +33,7 @@ class ApiRequest {
      * @param clientSecret  Our spotify clientSecret
      * @param redirectUri   The uri spotify redirects the user to after logging in 
      */
-    function __construct(string $clientId = CLIENT_ID, string $clientSecret = CLIENT_SECRET, string $redirectUri = REDIRECT_URI) {
+    function __construct($clientId = CLIENT_ID, $clientSecret = CLIENT_SECRET,  $redirectUri = REDIRECT_URI) {
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
         $this->redirectUri = $redirectUri;
@@ -50,7 +50,7 @@ class ApiRequest {
      * 
      * @return json     The raw string json data received from the API
      */
-    function request(string $uri, array $params = null, string $method = 'GET') {
+    function request($uri,$params = null, $method = 'GET') {
         // If one of the following three is null it means we haven't logged in yet, or something went wrong
         // So we have to login again
         if ($this->accessToken == null || $this->refreshToken == null || $this->expirationDate == null)

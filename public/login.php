@@ -20,9 +20,14 @@ if (isset($_GET['code'])) {
 // Define all the scopes we're going to need
 $scopes = 'user-read-recently-played user-read-currently-playing';
 
+$clientId = CLIENT_ID;
+$redirectUri = REDIRECT_URI;
 // Encode the parameters we need to pass on
 $escapedScopes = urlencode($scopes);
 $escapedRedirectUri = urlencode($redirectUri);
+
+$clientId = CLIENT_ID;
+
 
 // The URL to start the OAuth procedure
 $authorizeUrl = "https://accounts.spotify.com/authorize?response_type=code&client_id=$clientId&scope=$escapedScopes&redirect_uri=$escapedRedirectUri";

@@ -4,8 +4,8 @@ require_once('Track.php');
 // Creating a simplified object of the data defined here:
 // https://developer.spotify.com/documentation/web-api/reference/player/get-recently-played/
 class RecentlyPlayed {
-    public string $date;
-    public Track $track;
+    public $date;
+    public $track;
 
     function __construct($data) {
         $this->date = $data->played_at;

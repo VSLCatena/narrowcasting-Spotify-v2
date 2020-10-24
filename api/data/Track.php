@@ -3,10 +3,10 @@
 // Creating a simplified object of the data defined here:
 // https://developer.spotify.com/documentation/web-api/reference/tracks/get-track/
 class Track {
-    public string $name;
-    public array $artists;
-    public ?int $popularity;
-    public string $image;
+    public $name;
+    public $artists;
+    public $popularity;
+    public $image;
 
     function __construct($data) {
         $this->name = $data->name;

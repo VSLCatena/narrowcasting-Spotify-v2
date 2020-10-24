@@ -30,7 +30,7 @@ function getRecentlyPlayed($apiRequest, $historyLimit) {
 
 
 // with all requests, we first decode it to an object, and then we map it to a data object
-try {
+
     // Create a new ApiRequest object
     $apiRequest = new ApiRequest();
 
@@ -56,7 +56,3 @@ try {
     // Output as JSON
     header('Content-Type: application/json');
     echo json_encode($ret);
-} catch(Exception $e) {
-    // Whoops, something went wrong
-    echo json_encode(array('error' => $e->getMessage()));
-}
